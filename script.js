@@ -69,7 +69,7 @@ function showResults(str){
     to_show.forEach(idx => {
         createElement(idx);
     });
-    console.log(body);
+    // console.log(body);
 }
 
 function getData(movie_name, obj){
