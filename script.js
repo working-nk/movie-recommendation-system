@@ -1,9 +1,7 @@
-// add try-catch for non-present results in similarity, lookup and show
 // try adding tries implementation with all small letters
-// better the look of system
 
-const search_button = document.getElementById('enter');
-const search_box = document.getElementById('searchbox');
+const search_button = document.getElementById('search-btn');
+const search_box = document.getElementById('search-box');
 const body = document.getElementById('lowerbody');
 
 const similarity = await loadSim();
@@ -57,19 +55,40 @@ function showResults(str){
     str = str.toLowerCase();
     str = str.replace(/\W*[_]*/g,'');
     const idx = lookup[str];
-    const to_show_arr = similarity[idx];
-    const to_show = [];
-    let LIMIT = 15;
-    for(let mov of to_show_arr){
-        if(LIMIT > 0){
-            to_show.push(mov[0])
-            LIMIT--;
+    if(idx !== undefined){
+        const to_show_arr = similarity[idx];
+        const to_show = [];
+        let LIMIT = 14;
+        for(let mov of to_show_arr){
+            if(LIMIT > 0){
+                to_show.push(mov[0])
+                LIMIT--;
+            }
         }
+        to_show.forEach(idx => {
+            createElement(idx);
+        });
+    } else {
+        let child = document.createElement("div");
+        const random = []
+        for(let i = 0; i < 6; i++)
+            random.push(show[Math.ceil(Math.random()*show.length)]);
+        child.innerHTML = `<h2>Sorry for inconvenience :(
+            <br>We'll be adding this title soon</h2>
+            <h3>Try these instead:<br>
+                <ul>
+                    <li>${random[0]}</li>
+                    <li>${random[1]}</li>
+                    <li>${random[2]}</li>
+                    <li>${random[3]}</li>
+                    <li>${random[4]}</li>
+                    <li>${random[5]}</li>
+                </ul>
+            </h3>
+            `;
+        child.id = 'nofind';
+        body.appendChild(child);
     }
-    to_show.forEach(idx => {
-        createElement(idx);
-    });
-    // console.log(body);
 }
 
 function getData(movie_name, obj){
