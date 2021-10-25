@@ -3,16 +3,15 @@
 <head>
     <title>Recommendation Engine</title>
     <link rel="stylesheet" href="styles.css">
+    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
 </head>
 <body>
     <div id="upperbody">
-        <input type="text" id="searchbox" placeholder="  Enter Movie...">
-        <button id="enter"></button>
+        <input type="text" id="search-box" placeholder="  Enter Movie...">
+        <button id="search-btn"><i class = "material-icons">searchbox</i></button>
     </div>
-    <div id="lowerbody">
-        <!-- <div class="movie-container"></div> -->
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <div id="lowerbody"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="script.js"></script>
 </body>
 </html>
